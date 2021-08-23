@@ -31,7 +31,7 @@ const thoughtController = {
           });
     },
 
-    //create thoughts
+    // create thoughts
     // expected:
     // {
     //     "thoughtText": "foo",
@@ -56,7 +56,30 @@ const thoughtController = {
             .catch(err => res.json(err));
         })
         .catch(err => res.status(400).json(err));
-      },
+    },
+
+    //update thoughts
+    // expected on of the following:
+    // {
+    //     "thoughtText": "foo",
+    //     "username": "bar",  // should be a username that corresponds to a User instance
+    //     "userId": "userId"  // should be a userId that corresponds to the same User instance as username
+    // }
+    updateThought({ params, body }, res) {
+        Thought.findOneAndUpdate(
+            { _id: params.id },
+            body,
+            { new: true }
+        )
+        .then(dbThoughtData => {
+            if (!dbThoughtData) {
+                res.status(404).json({ message: 'No thought found with this id' });
+                return;
+            }
+            res.json(dbThoughtData);
+        })
+        .catch(err => res.status(400).json(err));
+    },
 
     //remove thought
     removeThought({ params, body }, res) {
@@ -99,12 +122,16 @@ const thoughtController = {
         .catch(err => res.status(500).json(err));
     },
 
-    //remove reaction form thought
+    // remove reaction form thought
+    // expected:
+    // {
+    //     "reactionId": "baz"  // should be a reactionId in the specified Thought instance
+    // }
     removeReaction({ params }, res) {
         Thought.findOneAndUpdate(
             { _id: params.thoughtId },
-            { $pull: { reactions: { reactionId: params.reactionId } } },
-            { new: true }
+            { $pull: { reactions: { reactionId: body.reactionId } } },
+            { new: true, runValidators: true }
         )
         .then(dbThoughtData => {
             if (!dbThoughtData) {

@@ -18,13 +18,13 @@ router.route('/')
 router.route('/:id')
   .get(getThoughtById)
   .put(updateThought)
-  .delete(deleteThought);
+  .delete(removeThought);
 
 // /api/thoughts/<pizzaId>/<thoughtId>
 router.route('/:userId/:thoughtId')
   .get(getThoughtById)
   .put(updateThought)
-  .delete(deleteThought);
+  .delete(removeThought);
 
 // /api/thoughts/<userId>/<thoughtId>/<replyId>
 router.route('/:userId/:thoughtsId/:reactionId')
