@@ -2,7 +2,7 @@ const { User } = require('../models');
 
 const UserController = {
     //get all UserSchema
-    getAllUser(req, res) {
+    getAllUsers(req, res) {
         User.find({})
         .select('-__v')
         .then(dbUserData => res.json(dbUserData))
