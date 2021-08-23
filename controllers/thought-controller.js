@@ -106,6 +106,11 @@ const thoughtController = {
 
     
     //add reactions to thought
+    // expected:
+    // {
+    //     "reactionBody": "baz foo bar car shard", //main body of reaction here
+    //     "username": "foo"
+    // }
     addReaction({ params, body }, res) {
         Thought.findOneAndUpdate(
             { _id: params.thoughtId },
