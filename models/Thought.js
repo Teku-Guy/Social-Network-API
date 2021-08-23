@@ -22,7 +22,7 @@ const ThoughtSchema = new Schema(
         type: String,
         required: true
     },
-    //reactions
+    //import reactionSchema from reaction.js
     reactions:[reactionSchema]
   },
   {
