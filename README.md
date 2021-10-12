@@ -1,7 +1,7 @@
 # Social-Network-API
 
 ## Description
-UCLA Bootcamp week 18. A REST API for a social media app. Built with Express, Mongoose, and MongoDB.
+A REST API for a social media app. Built with Express, Mongoose, and MongoDB.
 
 ## User Story
 **As a** social media startup, **I want** an API for my social network that uses a NoSQL database **so that** my website can handle large amounts of unstructured data.
