@@ -1,7 +1,7 @@
 # Social-Network-API
 
 ## Description
-A REST API for a social media app. Built with Express, Mongoose, and MongoDB.
+A RESTful API for a social media app. Built with Express, Mongoose, and MongoDB. All the backend functions work next step would be to connect them to a front end site or app.
 
 ## User Story
 **As a** social media startup, **I want** an API for my social network that uses a NoSQL database **so that** my website can handle large amounts of unstructured data.
